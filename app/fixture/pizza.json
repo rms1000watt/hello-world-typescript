@@ -1,0 +1,46 @@
+[
+  {
+    "orderNumber": 0,
+    "customerID": 4910,
+    "toppings": [
+      "pepperoni",
+      "olive"
+    ],
+    "size": "large",
+    "orderType": "phone",
+    "destination": "pickup"
+  },
+  {
+    "orderNumber": 1,
+    "customerID": 33312,
+    "toppings": [
+      "ham",
+      "pineapple"
+    ],
+    "size": "small",
+    "orderType": "internet",
+    "destination": "delivery"
+  },
+  {
+    "orderNumber": 2,
+    "customerID": 818282,
+    "toppings": [
+      "anchovy",
+      "jalepeno"
+    ],
+    "size": "medium",
+    "orderType": "phone",
+    "destination": "pickup"
+  },
+  {
+    "orderNumber": 3,
+    "customerID": 999,
+    "toppings": [
+      "pepperoni",
+      "bacon"
+    ],
+    "size": "large",
+    "orderType": "phone",
+    "destination": "delivery"
+  }
+]

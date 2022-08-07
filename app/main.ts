@@ -1,18 +1,28 @@
-import express, { Express, Request, Response } from 'express';
-import { Config } from './config';
-// import axios from 'axios';
+import express, {Express, Request, Response} from 'express';
+import bodyParser from 'body-parser';
 
-const app: Express = express();
-const config: Config = new Config();
+import {Config} from './config';
+import {router as ipRouter} from './route/ip';
 
-app.get("/", (req: Request, res: Response) => {
-    res.send("hello world\n");
-});
+function main() {
+  const config: Config = new Config();
+  try { config.validate() } catch(e) {
+    console.log("Invalid config:", e)
+    process.exit(1)
+  }
 
-// app.get("/google", (req: Request, res: Response) => {
-//     let out = await axios.get("https://www.google.com/");
-// });
+  const app: Express = express();
+  app.use(bodyParser.json())
 
-app.listen(config.port, () => {
+  app.get("/", (req: Request, res: Response) => {
+    res.send("ok\n");
+  });
+
+  app.use("/ip", ipRouter)
+
+  app.listen(config.port, () => {
     console.log(`server started at http://localhost:${config.port}`);
-});
+  });
+}
+
+main()
