@@ -3,6 +3,7 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "module": "commonjs",
+    "resolveJsonModule": true,
     "rootDir": "./app",
     "skipLibCheck": true,
     "strict": true,
