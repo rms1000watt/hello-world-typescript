@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "compile": "tsc --project ./ --outDir ./dist",
-    "lint": "eslint . --ext .ts -c .eslint",
+    "compile": "tsc --project ./",
+    "lint": "eslint . --ext .ts -c .eslintrc",
     "start": "ts-node app/main.ts"
   },
   "dependencies": {
