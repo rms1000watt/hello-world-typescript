@@ -4,11 +4,11 @@ export class Config {
 
   constructor() {
     this.port = parseInt(process.env.PORT as string) || 3000;
-    this.pizzaFile = process.env.PIZZA_FILE          || "./fixture/pizza.json"
+    this.pizzaFile = process.env.PIZZA_FILE || "./fixture/pizza.json";
   }
 
   validate() {
-    if (!this.port)      throw "PORT is not integer";
+    if (!this.port) throw "PORT is not integer";
     if (!this.pizzaFile) throw "PIZZA_FILE is not integer";
   }
 }

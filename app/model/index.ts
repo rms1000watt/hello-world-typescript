@@ -1,6 +1,2 @@
-import {Pizza, loadPizzas} from './pizza';
-
-export {
-  Pizza,
-  loadPizzas,
-}
+import { Pizza, loadPizzas } from "./pizza";
+export { Pizza, loadPizzas };
