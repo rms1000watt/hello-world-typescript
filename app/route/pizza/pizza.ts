@@ -1,11 +1,24 @@
 import Ajv from "ajv/dist/jtd";
 const ajv = new Ajv();
 
-export const validate = ajv.compile({
+const schemaPizza = {
   properties: {
-    orderID: { type: "uint32" }, // TODO: range
-    customerID: { type: "uint32" }, // TODO: range
-    toppings: { elements: { enum: ["pepperoni", "bacon", "sausage", "ham"] } },
+    orderID: { type: "uint32" },
+    customerID: { type: "uint32" },
+    toppings: {
+      elements: {
+        enum: [
+          "anchovy",
+          "bacon",
+          "ham",
+          "jalepeno",
+          "olive",
+          "pepperoni",
+          "pineapple",
+          "sausage",
+        ],
+      },
+    },
     size: { enum: ["XL", "L", "M", "S"] },
     orderType: { enum: ["phone", "website"] },
     destination: { enum: ["pickup", "delivery"] },
@@ -13,4 +26,13 @@ export const validate = ajv.compile({
   optionalProperties: {
     promotion: { type: "string" },
   },
-});
+};
+
+const schemaPizzas = {
+  elements: {
+    schemaPizza,
+  },
+};
+
+export const validatePizza = ajv.compile(schemaPizza);
+// export const validatePizzas = ajv.compile(schemaPizzas);

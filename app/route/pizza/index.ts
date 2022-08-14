@@ -1,10 +1,10 @@
 import { Router, Request, Response } from "express";
-import { validate } from "./pizza";
+import { validatePizza } from "./pizza";
 
 const router: Router = Router();
 
 router.post("/", async (req: Request, res: Response) => {
-  if (validate(req.body)) {
+  if (validatePizza(req.body)) {
     res.send("valid pizza order");
     return;
   }

@@ -6,7 +6,7 @@
       "pepperoni",
       "olive"
     ],
-    "size": "large",
+    "size": "L",
     "orderType": "phone",
     "destination": "pickup"
   },
@@ -17,7 +17,7 @@
       "ham",
       "pineapple"
     ],
-    "size": "small",
+    "size": "S",
     "orderType": "internet",
     "destination": "delivery"
   },
@@ -28,7 +28,7 @@
       "anchovy",
       "jalepeno"
     ],
-    "size": "medium",
+    "size": "M",
     "orderType": "phone",
     "destination": "pickup"
   },
@@ -39,7 +39,7 @@
       "pepperoni",
       "bacon"
     ],
-    "size": "large",
+    "size": "L",
     "orderType": "phone",
     "destination": "delivery"
   }
