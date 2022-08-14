@@ -3,8 +3,8 @@ const ajv = new Ajv();
 
 export const validate = ajv.compile({
   properties: {
-    orderID: { type: "int32" }, // TODO: range
-    customerID: { type: "int32" }, // TODO: range
+    orderID: { type: "uint32" }, // TODO: range
+    customerID: { type: "uint32" }, // TODO: range
     toppings: { elements: { enum: ["pepperoni", "bacon", "sausage", "ham"] } },
     size: { enum: ["XL", "L", "M", "S"] },
     orderType: { enum: ["phone", "website"] },
