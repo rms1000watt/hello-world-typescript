@@ -1,14 +1,12 @@
-import Ajv from "ajv";
+import Ajv from "ajv/dist/jtd";
 const ajv = new Ajv();
 
 const schemaPizza = {
-  type: "object",
   properties: {
-    orderID: { type: "number" },
-    customerID: { type: "number" },
+    orderID: { type: "uint32" },
+    customerID: { type: "uint32" },
     toppings: {
-      type: "array",
-      items: {
+      elements: {
         enum: [
           "anchovy",
           "bacon",
@@ -24,17 +22,10 @@ const schemaPizza = {
     size: { enum: ["XL", "L", "M", "S"] },
     orderType: { enum: ["phone", "website"] },
     destination: { enum: ["pickup", "delivery"] },
+  },
+  optionalProperties: {
     promotion: { type: "string" },
   },
-  required: [
-    "orderID",
-    "customerID",
-    "toppings",
-    "size",
-    "orderType",
-    "destination",
-  ],
-  additionalProperties: false,
 };
 
 export const validatePizza = ajv.compile(schemaPizza);
