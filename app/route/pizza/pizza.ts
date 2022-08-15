@@ -4,8 +4,8 @@ const ajv = new Ajv();
 const schemaPizza = {
   type: "object",
   properties: {
-    orderID: { type: "number" },
-    customerID: { type: "number" },
+    orderID: { type: "number", minimum: 0, maximum: 999999 },
+    customerID: { type: "number", minimum: 0, maximum: 999999 },
     toppings: {
       type: "array",
       items: {
