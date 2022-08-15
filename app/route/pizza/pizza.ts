@@ -4,8 +4,12 @@ const ajv = new Ajv();
 const schemaPizza = {
   type: "object",
   properties: {
-    orderID: { type: "number", minimum: 0, maximum: 999999 },
     customerID: { type: "number", minimum: 0, maximum: 999999 },
+    destination: { enum: ["pickup", "delivery"] },
+    orderID: { type: "number", minimum: 0, maximum: 999999 },
+    orderType: { enum: ["phone", "website"] },
+    promotion: { type: "string" },
+    size: { enum: ["XL", "L", "M", "S"] },
     toppings: {
       type: "array",
       items: {
@@ -21,18 +25,14 @@ const schemaPizza = {
         ],
       },
     },
-    size: { enum: ["XL", "L", "M", "S"] },
-    orderType: { enum: ["phone", "website"] },
-    destination: { enum: ["pickup", "delivery"] },
-    promotion: { type: "string" },
   },
   required: [
-    "orderID",
     "customerID",
-    "toppings",
-    "size",
-    "orderType",
     "destination",
+    "orderID",
+    "orderType",
+    "size",
+    "toppings",
   ],
   additionalProperties: false,
 };
