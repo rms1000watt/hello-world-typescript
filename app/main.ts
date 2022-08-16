@@ -1,13 +1,13 @@
 import express, { Express, Request, Response } from "express";
 import bodyParser from "body-parser";
+import { DefinedError } from "ajv";
 
 import { Config } from "./config";
-import { Pizza, loadPizzas } from "./model";
 import { router as ipRouter } from "./route/ip";
 import { router as pizzaRouter } from "./route/pizza";
 
-// import pizzaJSON from "./fixture/pizza.json";
-// import { validatePizzas } from "./route/pizza/pizza";
+import pizzaJSON from "./fixture/pizza.json";
+import { validatePizzas } from "./route/pizza/pizza";
 
 function main() {
   // dependency injection for config, pizzas, etc.
@@ -19,8 +19,6 @@ function main() {
     process.exit(1);
   }
 
-  const pizzas: Pizza[] = loadPizzas();
-
   // create app
   const app: Express = express();
 
@@ -28,8 +26,14 @@ function main() {
   app.use(bodyParser.json());
 
   // set app globals
-  app.set("pizzas", pizzas);
-  // console.log("validatePizzas(pizzaJSON):", validatePizzas(pizzaJSON));
+  // TODO: simplify this
+  if (!validatePizzas(pizzaJSON)) {
+    for (const err of validatePizzas.errors as DefinedError[]) {
+      console.log(`ERROR: ${err.instancePath}: ${err.message}`);
+    }
+    return;
+  }
+  app.set("pizzas", pizzaJSON);
 
   // healthcheck route
   app.get("/", (req: Request, res: Response) => {

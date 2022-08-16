@@ -3,6 +3,11 @@ import { validatePizza } from "./pizza";
 
 const router: Router = Router();
 
+router.get("/", async (req: Request, res: Response) => {
+  const pizzas: [] = req.app.get("pizzas");
+  res.json(pizzas);
+});
+
 router.post("/", async (req: Request, res: Response) => {
   if (validatePizza(req.body)) {
     res.send("valid pizza order");

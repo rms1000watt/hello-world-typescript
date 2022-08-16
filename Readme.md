@@ -23,5 +23,8 @@ node dist/main.js
 `curl` examples:
 
 ```bash
+curl -H 'Content-Type: application/json' localhost:3000/ip
+curl -H 'Content-Type: application/json' localhost:3000/pizza
+
 curl -XPOST -H 'Content-Type: application/json' -d '{"orderID":333,"toppings":["pepperoni","bacon"],"customerID":1,"size":"L","orderType":"phone","destination":"delivery"}' localhost:3000/pizza/
 ```

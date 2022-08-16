@@ -37,4 +37,10 @@ const schemaPizza = {
   additionalProperties: false,
 };
 
+const schemaPizzas = {
+  type: "array",
+  items: schemaPizza,
+};
+
 export const validatePizza = ajv.compile(schemaPizza);
+export const validatePizzas = ajv.compile(schemaPizzas);
