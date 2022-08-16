@@ -28,9 +28,8 @@ function main() {
   // set app globals
   // TODO: simplify this
   if (!validatePizzas(pizzaJSON)) {
-    for (const err of validatePizzas.errors as DefinedError[]) {
+    for (const err of validatePizzas.errors as DefinedError[])
       console.log(`ERROR: ${err.instancePath}: ${err.message}`);
-    }
     return;
   }
   app.set("pizzas", pizzaJSON);
