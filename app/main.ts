@@ -7,7 +7,7 @@ import { router as ipRouter } from "./route/ip";
 import { router as pizzaRouter } from "./route/pizza";
 
 import pizzaJSON from "./fixture/pizza.json";
-import { validatePizzas } from "./route/pizza/pizza";
+import { validatePizzas } from "./route/pizza/pizza-ajv";
 
 function main() {
   // dependency injection for config, pizzas, etc.

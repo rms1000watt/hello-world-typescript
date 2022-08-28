@@ -1,5 +1,6 @@
 import { Router, Request, Response } from "express";
-import { validatePizza } from "./pizza";
+import { validatePizza as vpAJV } from "./pizza-ajv";
+import { validatePizza as vpIOTS } from "./pizza-iots";
 
 const router: Router = Router();
 
@@ -9,7 +10,12 @@ router.get("/", async (req: Request, res: Response) => {
 });
 
 router.post("/", async (req: Request, res: Response) => {
-  if (validatePizza(req.body)) {
+  if (vpIOTS(req.body)) {
+    console.log("valid pizza order io-ts");
+  }
+
+  if (vpAJV(req.body)) {
+    console.log("valid pizza order ajv");
     res.send("valid pizza order");
     return;
   }
