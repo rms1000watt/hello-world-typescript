@@ -28,9 +28,11 @@ const Pizza = t.type({
   ),
 });
 
-console.log(isRight(Pizza.decode(req.body)));
-console.log(PathReporter.report(Pizza.decode(req.body)));
+export function validatePizza(input: object): string[] {
+  const decoded = Pizza.decode(input);
+  if (!isRight(decoded)) {
+    return PathReporter.report(decoded);
+  }
 
-export function validatePizza(input: any) {
-
-};
+  return [];
+}
