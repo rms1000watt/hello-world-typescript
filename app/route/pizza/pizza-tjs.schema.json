@@ -1,0 +1,78 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "definitions": {
+        "Destination": {
+            "enum": [
+                "delivery",
+                "pickup"
+            ],
+            "type": "string"
+        },
+        "OrderType": {
+            "enum": [
+                "phone",
+                "website"
+            ],
+            "type": "string"
+        },
+        "Size": {
+            "enum": [
+                "L",
+                "M",
+                "S",
+                "XL"
+            ],
+            "type": "string"
+        }
+    },
+    "properties": {
+        "customerID": {
+            "maximum": 999999999,
+            "minimum": 0,
+            "type": "integer"
+        },
+        "destination": {
+            "$ref": "#/definitions/Destination"
+        },
+        "orderID": {
+            "maximum": 999999999,
+            "minimum": 0,
+            "type": "integer"
+        },
+        "orderType": {
+            "$ref": "#/definitions/OrderType"
+        },
+        "promotion": {
+            "type": "string"
+        },
+        "size": {
+            "$ref": "#/definitions/Size"
+        },
+        "toppings": {
+            "items": {
+                "enum": [
+                    "anchovy",
+                    "bacon",
+                    "ham",
+                    "jalepeno",
+                    "olive",
+                    "pepperoni",
+                    "pineapple",
+                    "sausage"
+                ],
+                "type": "string"
+            },
+            "type": "array"
+        }
+    },
+    "required": [
+        "customerID",
+        "destination",
+        "orderID",
+        "orderType",
+        "size",
+        "toppings"
+    ],
+    "type": "object"
+}
+
