@@ -1,8 +1,13 @@
 import { Router, Request, Response } from "express";
 import { validatePizza as vpAJV } from "./pizza-ajv";
 import { validatePizza as vpIOTS } from "./pizza-iots";
-import { Pizza, validatePizza as vpTJS } from "./pizza-tjs";
+import { Pizza } from "./pizza-tjs";
 
+import schemaPizza from "./pizza-tjs.schema.json";
+import Ajv from "ajv";
+
+const ajv = new Ajv();
+const vpTJS = ajv.compile(schemaPizza);
 const router: Router = Router();
 
 router.get("/", async (req: Request, res: Response) => {

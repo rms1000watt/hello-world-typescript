@@ -1,8 +1,3 @@
-// TODO: FIX this because running tjs fails since circular reference
-import schemaPizza from "./pizza-tjs.schema.json";
-import Ajv from "ajv";
-const ajv = new Ajv();
-
 enum Destination {
   pickup = "pickup",
   delivery = "delivery",
@@ -53,5 +48,3 @@ export interface Pizza {
 
   promotion?: string;
 }
-
-export const validatePizza = ajv.compile(schemaPizza);
