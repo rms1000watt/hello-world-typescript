@@ -16,6 +16,15 @@ router.get("/", async (req: Request, res: Response) => {
 });
 
 router.post("/", async (req: Request, res: Response) => {
+  console.log(vpTJS(req.body));
+  // if (!vpTJS(req.body)) {
+  //   // console.log("invalid pizza order tjs1:");
+  //   // for (const err of vpTJS.errors as []) {
+  //   //   console.log(`ERROR: ${err["instancePath"]}: ${err["message"]}`);
+  //   // }
+  // }
+
+  // TODO: the schema isn't failing when it should
   handlePizza(req.body);
 
   const outIOTS = vpIOTS(req.body);
@@ -39,7 +48,7 @@ router.post("/", async (req: Request, res: Response) => {
 
 function handlePizza(pizza: Pizza) {
   if (!vpTJS(pizza)) {
-    console.log("invalid pizza order tjs:");
+    console.log("invalid pizza order tjs2:");
     for (const err of vpTJS.errors as [])
       console.log(`ERROR: ${err["instancePath"]}: ${err["message"]}`);
 
