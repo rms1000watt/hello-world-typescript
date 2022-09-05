@@ -15,57 +15,6 @@
             ],
             "type": "string"
         },
-        "Pizza": {
-            "properties": {
-                "customerID": {
-                    "maximum": 999999999,
-                    "minimum": 0,
-                    "type": "integer"
-                },
-                "destination": {
-                    "$ref": "#/definitions/Destination"
-                },
-                "orderID": {
-                    "maximum": 999999999,
-                    "minimum": 0,
-                    "type": "integer"
-                },
-                "orderType": {
-                    "$ref": "#/definitions/OrderType"
-                },
-                "promotion": {
-                    "type": "string"
-                },
-                "size": {
-                    "$ref": "#/definitions/Size"
-                },
-                "toppings": {
-                    "items": {
-                        "enum": [
-                            "anchovy",
-                            "bacon",
-                            "ham",
-                            "jalepeno",
-                            "olive",
-                            "pepperoni",
-                            "pineapple",
-                            "sausage"
-                        ],
-                        "type": "string"
-                    },
-                    "type": "array"
-                }
-            },
-            "required": [
-                "customerID",
-                "destination",
-                "orderID",
-                "orderType",
-                "size",
-                "toppings"
-            ],
-            "type": "object"
-        },
         "Size": {
             "enum": [
                 "L",
@@ -74,20 +23,56 @@
                 "XL"
             ],
             "type": "string"
-        },
-        "Toppings": {
-            "enum": [
-                "anchovy",
-                "bacon",
-                "ham",
-                "jalepeno",
-                "olive",
-                "pepperoni",
-                "pineapple",
-                "sausage"
-            ],
-            "type": "string"
         }
-    }
+    },
+    "properties": {
+        "customerID": {
+            "maximum": 999999999,
+            "minimum": 0,
+            "type": "integer"
+        },
+        "destination": {
+            "$ref": "#/definitions/Destination"
+        },
+        "orderID": {
+            "maximum": 999999999,
+            "minimum": 0,
+            "type": "integer"
+        },
+        "orderType": {
+            "$ref": "#/definitions/OrderType"
+        },
+        "promotion": {
+            "type": "string"
+        },
+        "size": {
+            "$ref": "#/definitions/Size"
+        },
+        "toppings": {
+            "items": {
+                "enum": [
+                    "anchovy",
+                    "bacon",
+                    "ham",
+                    "jalepeno",
+                    "olive",
+                    "pepperoni",
+                    "pineapple",
+                    "sausage"
+                ],
+                "type": "string"
+            },
+            "type": "array"
+        }
+    },
+    "required": [
+        "customerID",
+        "destination",
+        "orderID",
+        "orderType",
+        "size",
+        "toppings"
+    ],
+    "type": "object"
 }
 

@@ -16,7 +16,15 @@ while read -r file; do
 done < <(find ./app -name '*-tjs.schema.json')
 
 while read -r file; do
+  grep_out=$(grep "^export interface .* {" "${file}")
+  if [[ $(echo "${grep_out}" | wc -l) -gt 1 ]]; then
+    echo "ERROR: > 1 'export interface' value found for file: ${file}"
+    exit 1
+  fi
+
+  schema_type=$(echo "${grep_out}" | cut -d' ' -f3)
+
   new_file="${file//-tjs.ts/-tjs.schema.json}"
-  echo "create: ${new_file}"
-  typescript-json-schema "${file}" "*" --required -o "${new_file}"
+  echo "handling: new_file=${new_file} schema_type=${schema_type}"
+  typescript-json-schema "${file}" "${schema_type}" --required -o "${new_file}"
 done < <(find ./app -name '*-tjs.ts')

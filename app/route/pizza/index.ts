@@ -2,7 +2,6 @@ import { Router, Request, Response } from "express";
 import { validatePizza as vpAJV } from "./pizza-ajv";
 import { validatePizza as vpIOTS } from "./pizza-iots";
 import { Pizza } from "./pizza-tjs";
-
 import schemaPizza from "./pizza-tjs.schema.json";
 import Ajv from "ajv";
 
@@ -16,15 +15,6 @@ router.get("/", async (req: Request, res: Response) => {
 });
 
 router.post("/", async (req: Request, res: Response) => {
-  console.log(vpTJS(req.body));
-  // if (!vpTJS(req.body)) {
-  //   // console.log("invalid pizza order tjs1:");
-  //   // for (const err of vpTJS.errors as []) {
-  //   //   console.log(`ERROR: ${err["instancePath"]}: ${err["message"]}`);
-  //   // }
-  // }
-
-  // TODO: the schema isn't failing when it should
   handlePizza(req.body);
 
   const outIOTS = vpIOTS(req.body);
